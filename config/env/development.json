@@ -1,5 +1,5 @@
 {
-    "db": "mongodb://localhost/e3hackathon",
+    "db": "mongodb://192.168.1.146/e3hackathon",
     "app": {
         "name": "e3hackathon"
     },
