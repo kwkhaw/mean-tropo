@@ -1,7 +1,7 @@
 {
-    "db": "mongodb://localhost/mean-dev",
+    "db": "mongodb://localhost/e3hackathon",
     "app": {
-        "name": "MEAN - A Modern Stack - Development"
+        "name": "e3hackathon"
     },
     "facebook": {
         "clientID": "APP_ID",
