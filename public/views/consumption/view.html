@@ -8,10 +8,11 @@
 <!--
 <div ng-app="myApp">
   <lines></lines>
+    <lines data=[1,2,3]></lines>
 </div>
 -->
   <div>
-    <lines data="consumptions.consumptions"></lines>
+    <lines data={{consumptions.consumptions}}></lines>
   </div>
   <!--
 	<ul class="consumptions unstyled">
@@ -26,6 +27,5 @@
 		</li>
 	</ul>
   -->
-	<span>{{consumption.user.name}}</span>
 </section>
 

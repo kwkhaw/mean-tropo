@@ -83,9 +83,49 @@ angular.module('mean.consumptions', []).
          restrict: 'E',
          replace: true,
          template: '<div id="chart">Your Energy Consumption 2012</div>',
+         /*
+         scope: {
+           data: "="
+         },
+         */
          link: function (scope, element, attrs) {
-//           var data = attrs.data.split(',');
-           var data = attrs.data;
+           /*
+           scope.$watch('data', function() {
+             console.log("$watch() is called");
+           });
+           */
+           scope.$on("_CONSUMPTION_UPDATE", function (evt, arg) {
+            console.log('testing.');
+            console.log(arg);
+            var yours = [];
+            consumptions = arg.consumptions;
+            for (var i = 0; i < consumptions.length; i++)
+            {
+              if (consumptions[i].CONTRACT_ACCOUNT_NO_MASKED == 80) {
+                yours.push(consumptions[i].PERTURBATED_CONSUMPTION);
+              }
+            }
+            var neighbours_sum = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            var neighbours_count = 50;
+            var sum = 0;
+            for (var i = 0; i < consumptions.length; i++)
+            {
+              neighbours_sum[consumptions[i].MONTH - 1] += consumptions[i].PERTURBATED_CONSUMPTION;
+            }
+            var neighbours_averages = [];
+            for (var i = 0; i < neighbours_sum.length; i++)
+            {
+              console.log('neighbour sum = ', neighbours_sum[i]);
+            }
+            for (var i = 0; i < neighbours_sum.length; i++)
+            {
+              neighbours_averages[i] = neighbours_sum[i] / neighbours_count;
+              console.log('neighbour average += ', i , " " , neighbours_averages[i]);
+            }
+            console.log(yours);
+            console.log(neighbours_averages);
+            plot_graph([yours,neighbours_averages]);
+           });
            /*
            var chart = d3.select('#linechart')
              .append("div").attr("class", "chart")
@@ -97,7 +137,7 @@ angular.module('mean.consumptions', []).
              .text(function(d) { return d + "%"; });
            */
 
-            plot_graph([D1,D2]);
+//            plot_graph([D1,D2]);
          } 
       };
    });

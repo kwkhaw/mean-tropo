@@ -1,4 +1,4 @@
-angular.module('mean.consumptions').controller('ConsumptionsController', ['$scope', '$routeParams', '$location', 'Global', 'Consumptions', function ($scope, $routeParams, $location, Global, Consumptions) {
+angular.module('mean.consumptions').controller('ConsumptionsController', ['$scope', '$rootScope', '$routeParams', '$location', 'Global', 'Consumptions', function ($scope, $rootScope, $routeParams, $location, Global, Consumptions) {
     $scope.global = Global;
 
     $scope.create = function() {
@@ -47,6 +47,9 @@ angular.module('mean.consumptions').controller('ConsumptionsController', ['$scop
             consumptionId: $routeParams.consumptionId
         }, function(consumptions) {
             $scope.consumptions = consumptions;
+            console.log('before broadcasting!!!!');
+            $rootScope.$broadcast("_CONSUMPTION_UPDATE", consumptions);
+            console.log('after broadcasting!!!!');
         });
     };
 }]);
