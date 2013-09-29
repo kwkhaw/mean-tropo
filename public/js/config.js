@@ -14,11 +14,15 @@ window.app.config(['$routeProvider',
         when('/articles/:articleId', {
             templateUrl: 'views/articles/view.html'
         }).
+        when('/consumptions/:consumptionId', {
+            templateUrl: 'views/consumption/view.html'
+        }).
         when('/', {
             templateUrl: 'views/index.html'
         }).
         otherwise({
             redirectTo: '/'
+//            templateUrl: 'views/consumption/view.html'
         });
     }
 ]);

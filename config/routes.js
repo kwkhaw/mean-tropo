@@ -64,7 +64,8 @@ module.exports = function(app, passport, auth) {
 
     // consumption Routes
     var consumption = require('../app/controllers/ecp_2012');
-    app.get('/consumption/:postalId', consumption.postalConsumption);
+    app.get('/consumptions/:postalId', consumption.postalConsumption);
+//    app.get('/consumptions', consumption.postalConsumption);
 
 
     //Article Routes

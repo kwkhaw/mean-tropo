@@ -1,0 +1,16 @@
+<section data-ng-controller="ConsumptionsController" data-ng-init="find()">
+	<ul class="consumptions unstyled">
+    <div ng-app="myApp">
+      <lines></lines>
+    </div>
+    <!--
+		<li data-ng-repeat="consumption in consumptions">
+			<span>{{consumption.created | date:'medium'}}</span> /
+			<span>{{consumption.user.name}}</span>
+			<h2><a data-ng-href="#!/consumptions/{{consumption._id}}">{{consumption.title}}</a></h2>
+			<div>{{consumption.content}}</div>
+		</li>
+    -->
+	</ul>
+	<h1 data-ng-hide="!consumptions || consumptions.length">No consumptions yet. <br> Why don't you <a href="/#!/consumptions/create">Create One</a>?</h1>
+</section>

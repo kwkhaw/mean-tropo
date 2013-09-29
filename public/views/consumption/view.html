@@ -4,9 +4,28 @@
 </h1>
 
 
-<!-- <section data-ng-controller="ArticlesController" data-ng-init="findOne()">
-	<span>{{article.created | date:'medium'}}</span> /
-	<span>{{article.user.name}}</span>
-	<h2>{{article.title}} <a data-ng-show="global.user._id == article.user._id" href="/#!/articles/{{article._id}}/edit">edit</a></h2>
-	<div>{{article.content}}</div>
-</section> -->
+<section data-ng-controller="ConsumptionsController" data-ng-init="findOne()">
+<!--
+<div ng-app="myApp">
+  <lines></lines>
+</div>
+-->
+  <div>
+    <lines data="consumptions.consumptions"></lines>
+  </div>
+  <!--
+	<ul class="consumptions unstyled">
+		<li data-ng-repeat="consumption in consumptions.consumptions">
+			<span>{{consumption.CONTRACT_ACCOUNT_NO_MASKED}}</span> /
+			<span>{{consumption.PLN_AREA_C}}</span>
+			<div>{{consumption.POSTAL_CD_FINAL}}</div>
+			<div>{{consumption.PREMISE_TYPE}}</div>
+			<div>{{consumption.MONTH}}</div>
+			<div>{{consumption.PERTURBATED_CONSUMPTION}}</div>
+			<div>{{consumption.PERTURBATED_AMT}}</div>
+		</li>
+	</ul>
+  -->
+	<span>{{consumption.user.name}}</span>
+</section>
+

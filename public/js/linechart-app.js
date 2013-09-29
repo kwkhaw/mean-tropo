@@ -1,23 +1,4 @@
-angular.module('myApp', []).
-
-   directive('bars', function ($parse) {
-      return {
-         restrict: 'E',
-         replace: true,
-         template: '<div id="chart"></div>',
-         link: function (scope, element, attrs) {
-           var data = attrs.data.split(','),
-           chart = d3.select('#chart')
-             .append("div").attr("class", "chart")
-             .selectAll('div')
-             .data(data).enter()
-             .append("div")
-             .transition().ease("elastic")
-             .style("width", function(d) { return d + "%"; })
-             .text(function(d) { return d + "%"; });
-         } 
-      };
-   }).
+angular.module('mean.consumptions', []).
 
    directive('lines', function ($parse) {
       //The data for our line
@@ -101,9 +82,10 @@ angular.module('myApp', []).
       return {
          restrict: 'E',
          replace: true,
-         template: '<div id="chart"></div>',
+         template: '<div id="chart">Your Energy Consumption 2012</div>',
          link: function (scope, element, attrs) {
 //           var data = attrs.data.split(',');
+           var data = attrs.data;
            /*
            var chart = d3.select('#linechart')
              .append("div").attr("class", "chart")

@@ -61,17 +61,21 @@ var EcpSchema = new Schema({
  */
 EcpSchema.statics = {
 
-    findByPostal : function(postalId){
+    findByPostal : function(postalId, cb){
 
         console.log(postalId);
         var postalIdInt = parseInt(postalId,10);
-        var query = this.find({POSTAL_CD_FINAL: postalIdInt});
+        var query = this.find({POSTAL_CD_FINAL: postalIdInt}).exec(cb);
 
+
+
+        /*
         console.log(query);
         var promise = query.exec();
         promise.addBack(function (err, docs) {
             console.log(docs);
         });
+        */
 
     }
 
