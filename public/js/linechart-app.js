@@ -82,7 +82,7 @@ angular.module('mean.consumptions', []).
       return {
          restrict: 'E',
          replace: true,
-         template: '<div id="chart">Your Energy Consumption 2012</div>',
+         template: '<div id="chart"></div>',
          /*
          scope: {
            data: "="
