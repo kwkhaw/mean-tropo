@@ -1,5 +1,5 @@
 {
-    "db": "mongodb://127.0.0.1/e3hackathon",
+    "db": "MONGOHQ_URL",
     "app": {
         "name": "e3hackathon"
     },
