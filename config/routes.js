@@ -97,7 +97,9 @@ module.exports = function(app, passport, auth) {
       console.log(message);
       tropo.say("Welcome to my Tropo Web API node demo.");
 
-      theSocket.emit('sms', {text: message});
+      if (theSocket) {
+        theSocket.emit('sms', {text: message});
+      }
 
       res.send(tropowebapi.TropoJSON(tropo));
     });
