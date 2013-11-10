@@ -1,4 +1,5 @@
 var async = require('async');
+var tropowebapi = require('tropo-webapi');
 
 module.exports = function(app, passport, auth) {
     //User Routes
@@ -78,6 +79,17 @@ module.exports = function(app, passport, auth) {
 
     //Finish with setting up the articleId param
     // app.param('articleId', articles.article);
+
+    app.post('/sms', function(req, res){
+      // Create a new instance of the TropoWebAPI object.
+      var tropo = new tropowebapi.TropoWebAPI();
+      // Use the say method https://www.tropo.com/docs/webapi/say.htm
+      console.log(req.body['session']);
+      console.log(JSON.toString(req.body['session']));
+      tropo.say("Welcome to my Tropo Web API node demo.");
+
+      res.send(tropowebapi.TropoJSON(tropo));
+    });
 
     //Home route
     var index = require('../app/controllers/index');
