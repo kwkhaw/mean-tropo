@@ -1,7 +1,7 @@
 var async = require('async');
 var tropowebapi = require('tropo-webapi');
 
-module.exports = function(app, passport, auth) {
+module.exports = function(app, passport, auth, io) {
     //User Routes
     var users = require('../app/controllers/users');
     app.get('/signin', users.signin);
@@ -80,9 +80,6 @@ module.exports = function(app, passport, auth) {
     //Finish with setting up the articleId param
     // app.param('articleId', articles.article);
 
-
-    // socket.io (FIXME: To be moved to somewhere else).
-    var io = require('socket.io').listen(app);
 
     var theSocket = null;
     io.sockets.on('connection', function (socket) {

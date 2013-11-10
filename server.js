@@ -4,7 +4,8 @@
 var express = require('express'),
     fs = require('fs'),
     passport = require('passport'),
-    logger = require('mean-logger');
+    logger = require('mean-logger')
+    http = require('http');
 
 /**
  * Main application entry file.
@@ -32,15 +33,22 @@ require('./config/passport')(passport);
 
 var app = express();
 
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);
+
 //express settings
 require('./config/express')(app, passport);
 
 //Bootstrap routes
-require('./config/routes')(app, passport, auth);
+require('./config/routes')(app, passport, auth, io);
 
 //Start the app by listening on <port>
 var port = config.port;
-app.listen(port);
+
+//app.listen(port); // Use http instead of app for socket.io.
+server.listen(port);
+
+
 console.log('Express app started on port ' + port);
 
 //Initializing logger 
