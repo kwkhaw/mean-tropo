@@ -1,5 +1,4 @@
 {
-    "db": "MONGOHQ_URL",
     "app": {
         "name": "e3hackathon"
     },
