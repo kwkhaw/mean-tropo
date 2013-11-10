@@ -84,16 +84,20 @@ module.exports = function(app, passport, auth) {
     // socket.io (FIXME: To be moved to somewhere else).
     var io = require('socket.io').listen(app);
 
+    var theSocket = null;
+    io.sockets.on('connection', function (socket) {
+      theSocket = socket;
+    });
+
     app.post('/sms', function(req, res){
       // Create a new instance of the TropoWebAPI object.
       var tropo = new tropowebapi.TropoWebAPI();
       // Use the say method https://www.tropo.com/docs/webapi/say.htm
       var message = req.body['session'].initialText; 
       console.log(message);
-      console.log(JSON.toString(message));
       tropo.say("Welcome to my Tropo Web API node demo.");
 
-      socket.emit('sms', {text: message});
+      theSocket.emit('sms', {text: message});
 
       res.send(tropowebapi.TropoJSON(tropo));
     });
