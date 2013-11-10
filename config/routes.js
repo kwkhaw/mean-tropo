@@ -80,13 +80,20 @@ module.exports = function(app, passport, auth) {
     //Finish with setting up the articleId param
     // app.param('articleId', articles.article);
 
+
+    // socket.io (FIXME: To be moved to somewhere else).
+    var io = require('socket.io').listen(app);
+
     app.post('/sms', function(req, res){
       // Create a new instance of the TropoWebAPI object.
       var tropo = new tropowebapi.TropoWebAPI();
       // Use the say method https://www.tropo.com/docs/webapi/say.htm
-      console.log(req.body['session']);
-      console.log(JSON.toString(req.body['session']));
+      var message = req.body['session'].initialText; 
+      console.log(message);
+      console.log(JSON.toString(message));
       tropo.say("Welcome to my Tropo Web API node demo.");
+
+      socket.emit('sms', {text: message});
 
       res.send(tropowebapi.TropoJSON(tropo));
     });
