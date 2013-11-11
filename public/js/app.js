@@ -6,9 +6,9 @@ window.app = angular.module('mean', [
               'mean.system',
               'mean.articles',
               'mean.consumptions',
-              'btford.socket-io']);
+              'mean.socket']);
 
-angular.module('btford.socket-io', []);
-angular.module('mean.system', ['btford.socket-io']);
+angular.module('mean.socket', []);
+angular.module('mean.system', []);
 angular.module('mean.articles', []);
 angular.module('mean.consumptions', []);
