@@ -8,6 +8,7 @@ window.app = angular.module('mean', [
               'mean.consumptions',
               'btford.socket-io']);
 
+angular.module('btford.socket-io', []);
 angular.module('mean.system', ['btford.socket-io']);
 angular.module('mean.articles', []);
 angular.module('mean.consumptions', []);
