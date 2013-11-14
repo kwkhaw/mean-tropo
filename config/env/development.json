@@ -1,6 +1,8 @@
 {
+    "db": "mongodb://localhost/mean-tropo",
+    "port": 3001,
     "app": {
-        "name": "e3hackathon"
+        "name": "SMARTFOUNDRY HACKATHON"
     },
     "facebook": {
         "clientID": "APP_ID",
