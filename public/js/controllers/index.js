@@ -1,6 +1,6 @@
-angular.module('mean.system').controller('IndexController', ['$scope', 'Global', 'Socket', function ($scope, Global, socket) {
+angular.module('mean.system').controller('IndexController', ['$scope', 'Global', 'Socket', function ($scope, Global, Socket) {
     $scope.global = Global;
-    socket.on('sms', function (ev, data) {
+    Socket.on('sms', function (ev, data) {
       $scope.theData = data;
       console.log($scope.theData.text);
     });

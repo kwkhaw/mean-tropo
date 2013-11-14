@@ -1,4 +1,4 @@
-angular.module('mean.socket').factory("Socket", [function() {
+angular.module('mean.system').factory("Socket", [function() {
   var socket = io.connect();
   return {
     on: function (eventName, callback) {
