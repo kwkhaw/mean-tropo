@@ -95,7 +95,7 @@ module.exports = function(app, passport, auth, io) {
     var uristring = "mongodb://heroku:c0735fa832f1a3024607effa9fdacb26@dharma.mongohq.com:10079/app19347354";
     var mongoUrl = url.parse(uristring);
 
-    var dbInstance = mongoClient.connect(uristring, function(err, db) {
+    mongoClient.connect(uristring, function(err, db) {
       console.log("Attemping connection");
       db.collection("messages", function(err, collection) {
         collection.isCapped(function(err, capped) {
@@ -108,28 +108,27 @@ module.exports = function(app, passport, auth, io) {
             process.exit(2);
           }
           console.log("successfully connect");
-//          startIOServer(collection);
+
+          app.post('/sms', function(req, res){
+            // Create a new instance of the TropoWebAPI object.
+            var tropo = new tropowebapi.TropoWebAPI();
+            // Use the say method https://www.tropo.com/docs/webapi/say.htm
+            var message = req.body['session'].initialText; 
+            console.log(message);
+            tropo.say("Welcome to my Tropo Web API node demo.");
+
+            collection.insert({data : message});
+
+
+            if (theSocket) {
+              theSocket.emit('sms', {text: message});
+            }
+
+            res.send(tropowebapi.TropoJSON(tropo));
+          });
         });
       });
       return db;
-    });
-
-    app.post('/sms', function(req, res){
-      // Create a new instance of the TropoWebAPI object.
-      var tropo = new tropowebapi.TropoWebAPI();
-      // Use the say method https://www.tropo.com/docs/webapi/say.htm
-      var message = req.body['session'].initialText; 
-      console.log(message);
-      tropo.say("Welcome to my Tropo Web API node demo.");
-
-      dbInstance.insert({data : message});
-
-
-      if (theSocket) {
-        theSocket.emit('sms', {text: message});
-      }
-
-      res.send(tropowebapi.TropoJSON(tropo));
     });
 
     //Home route
