@@ -39,7 +39,8 @@
         "grunt-bower-task": "latest",
         "tropo-webapi": "latest",
         "socket.io": "latest",
-        "mongodb": "latest"
+        "mongodb": "latest",
+        "url": "latest"
     },
     "devDependencies": {
         "supertest": "latest",

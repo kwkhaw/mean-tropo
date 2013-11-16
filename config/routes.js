@@ -1,6 +1,7 @@
 var async = require('async');
 var tropowebapi = require('tropo-webapi');
 var mongo = require('mongodb');
+var url = require('url');
 
 module.exports = function(app, passport, auth, io) {
     //User Routes
